@@ -1,12 +1,11 @@
-package main.java.login.database;
+package java.garage.database;
 
+import java.garage.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import main.java.login.bean.LoginBean;
 
 public class LoginDao {
 	
@@ -37,7 +36,7 @@ public class LoginDao {
 		return con;
 	}
 
-	public boolean validate(LoginBean loginBean) {
+	public boolean validate(User loginBean) {
 		
 		loadDriver(dbDriver);
 		Connection con = getConnection();

@@ -12,12 +12,16 @@
        <div align="left">
        <fieldset>
            <legend>User identification</legend>
-           <form action="login" method="post">
+           <form action="signup" method="post">
                <table>
                     <tr>
-                        <td>User name: </td>
-                        <td><input type="text" name="username" required='required'></td>
+                        <td>First name: </td>
+                        <td><input type="text" name="fname" required='required'></td>
+                    </tr>
                     <tr>
+                        <td>Surname: </td>
+                        <td><input type="password" name="surname" required='required'></td>
+                    </tr>
                     <tr>
                         <td>Password: </td>
                         <td><input type="password" name="password" required='required'></td>
@@ -26,9 +30,22 @@
                         <td>Confirm Password: </td>
                         <td><input type="password" name="cnfpassword" required='required'></td>
                     </tr>
+                     <tr>
+                        <td>Licence: </td>
+                        <td><input type="text" name="licence" required='required'></td>
+                    </tr>
                     <tr>
-                        <td></td>
-                        <td><input type="submit" value="Login"></td>
+                        <td>Email: </td>
+                        <td><input type="text" name="email" required='required'></td>
+                    </tr>
+                    <tr>
+                        <td>Phone number: </td>
+                        <td><input type="text" name="mobile" required='required'></td>
+                    </tr>
+                    <tr>
+                        <td>Gender: </td>
+                        <td><input type="radio" name="gender" value="male" required='required'>Male</td>
+                        <td><input type="radio" name="gender" value="female" required="required">Female</td>
                     </tr>
                 </table>
             </form>
@@ -47,6 +64,7 @@
             		</fieldset>
             </fieldset>
         </div>
+        <input type="submit" value="Login">
         <script>
             function validate_password() {
 
