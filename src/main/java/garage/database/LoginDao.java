@@ -1,15 +1,16 @@
-package java.garage.database;
+package garage.database;
 
-import java.garage.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
+
+import garage.User;
 
 public class LoginDao {
 	
-	private String dbUrl = "jdbc:mysql://localhost:3306/root";
+	private String dbUrl = "jdbc:mysql://localhost:3306/customers";
 	private String dbUname = "root";
 	private String dbPassword = "root1234";
 	private String dbDriver = "com.mysql.cj.jdbc.Driver";
@@ -36,26 +37,33 @@ public class LoginDao {
 		return con;
 	}
 
-	public boolean validate(User loginBean) {
+	public String validate(User user) {
 		
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String sql = "select * from login where username = ? password = ?";
-		boolean status = false;
+		String result = "Data entered successfully";
 		
 		PreparedStatement ps;
 		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, loginBean.getUsername());
-			ps.setString(2, loginBean.getPassword());
-			ResultSet rs =ps.executeQuery();
-			status = rs.next();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			ps =con.prepareStatement("insert into user values(?,?,?,?,?,?,?)");
+			
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getSurname());
+			ps.setString(3, user.getPassword());
+			ps.setString(4, user.getLicence());
+			ps.setString(5, user.getEmail());
+			ps.setString(6, user.getPhone());
+			ps.setString(7, user.getBirthday());
+			
+			ps.executeUpdate();
+			
+		} catch(SQLException e) {
+			
+			result = "Data was not entered";
 		}
-		
-		return status;
+
+		return result;
 		
 	}
 	

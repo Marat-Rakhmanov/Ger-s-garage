@@ -1,4 +1,4 @@
-package java.garage.web;
+package garage.web;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

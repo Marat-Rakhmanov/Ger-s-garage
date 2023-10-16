@@ -10,9 +10,10 @@
 
 <body>
        <div align="left">
+       <form action="SignUp" method="post">
        <fieldset>
            <legend>User identification</legend>
-           <form action="signup" method="post">
+           
                <table>
                     <tr>
                         <td>First name: </td>
@@ -20,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>Surname: </td>
-                        <td><input type="password" name="surname" required='required'></td>
+                        <td><input type="text" name="surname" required='required'></td>
                     </tr>
                     <tr>
                         <td>Password: </td>
@@ -40,31 +41,39 @@
                     </tr>
                     <tr>
                         <td>Phone number: </td>
-                        <td><input type="text" name="mobile" required='required'></td>
+                        <td><input type="text" name="phone" required='required'></td>
                     </tr>
+                    <!-- 
                     <tr>
                         <td>Gender: </td>
                         <td><input type="radio" name="gender" value="male" required='required'>Male</td>
                         <td><input type="radio" name="gender" value="female" required="required">Female</td>
                     </tr>
+                    -->
+                    <tr>
+                        <td>Birthday: </td>
+                        <td><input type="date" name="birthday" required='required'></td>
+                    </tr>
                 </table>
-            </form>
+            
             </fieldset>
+            <!--  
             <fieldset>
             	<legend>Vehicle details</legend>
             		<label>Make: <br/><input type="text" name="make" placeholder="BMW, Mercedes, Volkswagen ..."/></label><br/>
             		<label>Model: <br/><input type="text" name="model" placeholder="X5, 500E, Tiguan..."/></label><br/>
-            		<label>Vehicle plate: <br/><input type="text" name="vehicleplate"/></label><br/>
+            		<label>Vehicle plate: <br/><input type="text" name="vehiclePlate"/></label><br/>
             		<fieldset>
             			<legend>Engine type</legend>
-            			<input type="radio" name="engintype" value="petrol" checked="checked"/>Petrol <br/>
-            			<input type="radio" name="engintype" value="disiel"/>Disiel <br/>
-            			<input type="radio" name="engintype" value="electric"/>Electric<br/>
-            			<input type="radio" name="engintype" value="hybrid"/>Hybrid
+            			<input type="radio" name="enginType" value="petrol" checked="checked"/>Petrol <br/>
+            			<input type="radio" name="enginType" value="disiel"/>Disiel <br/>
+            			<input type="radio" name="enginType" value="electric"/>Electric<br/>
+            			<input type="radio" name="enginType" value="hybrid"/>Hybrid
             		</fieldset>
-            </fieldset>
+            </fieldset> -->
+            <input type="submit" value="Login">
+             </form>
         </div>
-        <input type="submit" value="Login">
         <script>
             function validate_password() {
 

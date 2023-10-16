@@ -5,15 +5,7 @@
     <welcome-file>welcome.jsp</welcome-file>
     <welcome-file>login.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
+    <welcome-file></welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>SignUp</display-name>
-    <servlet-name>SignUp</servlet-name>
-    <servlet-class>java.garage.web.SignUp</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SignUp</servlet-name>
-    <url-pattern>/SignUp</url-pattern>
-  </servlet-mapping>
+
 </web-app>
