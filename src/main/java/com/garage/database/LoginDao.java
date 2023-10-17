@@ -1,12 +1,12 @@
-package garage.database;
+package com.garage.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
 import java.sql.SQLException;
 
 import garage.User;
+
 
 public class LoginDao {
 	
@@ -37,36 +37,28 @@ public class LoginDao {
 		return con;
 	}
 
-	public String validate(User user) {
-		
+	public boolean insert (User user) {
 		loadDriver(dbDriver);
 		Connection con = getConnection();
-		String result = "Data entered successfully";
+		boolean result = false;
+		String sql = "insert into user (fname, surname, password, licence, email, phone, birthday)" + "values(?,?,?,?,?,?,?)";
 		
-		PreparedStatement ps;
 		try {
-			
-			ps =con.prepareStatement("insert into user values(?,?,?,?,?,?,?)");
-			
-			ps.setString(1, user.getUsername());
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user.getFname());
 			ps.setString(2, user.getSurname());
 			ps.setString(3, user.getPassword());
 			ps.setString(4, user.getLicence());
 			ps.setString(5, user.getEmail());
 			ps.setString(6, user.getPhone());
 			ps.setString(7, user.getBirthday());
-			
 			ps.executeUpdate();
-			
-		} catch(SQLException e) {
-			
-			result = "Data was not entered";
+			result = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = false;
 		}
-
 		return result;
-		
 	}
-	
-
-
 }

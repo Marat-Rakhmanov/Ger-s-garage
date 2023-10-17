@@ -8,12 +8,10 @@ public class User {
 	private String licence;
 	private String email;
 	private String phone;
-//	private String gender;
 	private String birthday;
 	
-	
-
-	public User(String fname, String surname, String password, String licence, String email, String phone, String birthday) {
+	public User(String fname, String surname, String password, String licence, String email, String phone,
+			String birthday) {
 		super();
 		this.fname = fname;
 		this.surname = surname;
@@ -21,26 +19,27 @@ public class User {
 		this.licence = licence;
 		this.email = email;
 		this.phone = phone;
-//		this.gender = gender;
 		this.birthday = birthday;
 	}
-	public String getUsername() {
+	
+	
+	public String getFname() {
 		return fname;
 	}
-	public void setUsername(String fname) {
+	public void setFname(String fname) {
 		this.fname = fname;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getSurname() {
 		return surname;
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getLicence() {
 		return licence;
@@ -60,12 +59,6 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-//	public String getGender() {
-//		return gender;
-//	}
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
 	public String getBirthday() {
 		return birthday;
 	}

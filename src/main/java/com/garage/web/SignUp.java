@@ -1,6 +1,7 @@
-package garage.web;
+package com.garage.web;
 
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,8 +10,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import com.garage.database.LoginDao;
+
 import garage.User;
-import garage.database.LoginDao;
 
 /**
  * Servlet implementation class SignUp
@@ -29,13 +31,16 @@ public class SignUp extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String birthday = request.getParameter("birthday");
-				
-		User user = new User(fname, surname, password, licence, email, phone, birthday);	
-		LoginDao loginDao = new LoginDao();
 		
-		String result = loginDao.validate(user);
-		response.getWriter().println(result);
-
+		User user = new User(fname, surname, password, licence, email, phone, birthday);
+		
+		LoginDao loginDao = new LoginDao();
+		if (loginDao.insert(user)) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			rd.forward(request, response);
+		}else {
+			response.getWriter().println("Data was not entered");
+		}
 	}
 
 }

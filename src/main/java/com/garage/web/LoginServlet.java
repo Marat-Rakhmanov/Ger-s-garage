@@ -1,4 +1,4 @@
-package garage.web;
+package com.garage.web;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -28,13 +28,13 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/garage", "root", "root1234");
-			PreparedStatement ps = con.prepareStatement("select email from users where email=? and password=?");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/customers", "root", "root1234");
+			PreparedStatement ps = con.prepareStatement("select email from user where email=? and password=?");
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()){
-				RequestDispatcher rd = request.getRequestDispatcher("html/index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("index.html");
 				rd.forward(request, response);
 			}else {
 				RequestDispatcher rd = request.getRequestDispatcher("create_account.jsp");
