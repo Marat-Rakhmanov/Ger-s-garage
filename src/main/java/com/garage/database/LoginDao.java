@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import garage.User;
+import garage.Vehicle;
 
 
 public class LoginDao {
@@ -61,4 +62,27 @@ public class LoginDao {
 		}
 		return result;
 	}
+	
+	public boolean insertVehicle (Vehicle vehicle) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		boolean result = false;
+		String sql ="insert into usercars (make, model, vehiclePlate, engineType)" + "values(?,?,?,?)";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, vehicle.getMake());
+			ps.setString(2, vehicle.getModel());
+			ps.setString(3, vehicle.getVehiclePlate());
+			ps.setString(4, vehicle.getEngineType());
+			ps.executeUpdate();
+			result = true;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+	
+	
 }

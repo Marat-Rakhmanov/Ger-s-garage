@@ -58,20 +58,21 @@
                 	</table>
             
             	</fieldset>
-            	<!--  
+            	   
             	<fieldset>
             		<legend>Vehicle details</legend>
             			<label>Make: <br/><input type="text" name="make" placeholder="BMW, Mercedes, Volkswagen ..."/></label><br/>
             			<label>Model: <br/><input type="text" name="model" placeholder="X5, 500E, Tiguan..."/></label><br/>
             			<label>Vehicle plate: <br/><input type="text" name="vehiclePlate"/></label><br/>
             			<fieldset>
-            		<legend>Engine type</legend>
-            			<input type="radio" name="enginType" value="petrol" checked="checked"/>Petrol <br/>
-            			<input type="radio" name="enginType" value="disiel"/>Disiel <br/>
-            			<input type="radio" name="enginType" value="electric"/>Electric<br/>
-            			<input type="radio" name="enginType" value="hybrid"/>Hybrid
-            		</fieldset>
-            	</fieldset> -->
+            				<legend>Engine type</legend>
+            					<input type="radio" name="engineType" value="petrol" checked="checked"/>Petrol <br/>
+            					<input type="radio" name="engineType" value="disiel"/>Disiel <br/>
+            					<input type="radio" name="engineType" value="electric"/>Electric<br/>
+            					<input type="radio" name="engineType" value="hybrid"/>Hybrid
+            			</fieldset>
+            	</fieldset>
+            	 
             	<input type="submit" value="Login">
         </form>
         </div>

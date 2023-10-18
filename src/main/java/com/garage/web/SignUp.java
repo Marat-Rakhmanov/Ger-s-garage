@@ -13,6 +13,8 @@ import java.io.IOException;
 import com.garage.database.LoginDao;
 
 import garage.User;
+import garage.Vehicle;
+//import garage.Vehicle;
 
 /**
  * Servlet implementation class SignUp
@@ -32,14 +34,25 @@ public class SignUp extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String birthday = request.getParameter("birthday");
 		
+		String make = request.getParameter("make");
+		String model = request.getParameter("model");
+		String vehiclePlate = request.getParameter("vehiclePlate");
+		String engineType = request.getParameter("engineType");
+		
 		User user = new User(fname, surname, password, licence, email, phone, birthday);
+		Vehicle vehicle = new Vehicle(make, model, vehiclePlate, engineType);
 		
 		LoginDao loginDao = new LoginDao();
 		if (loginDao.insert(user)) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
-			rd.forward(request, response);
+
+			if(loginDao.insertVehicle(vehicle)) {
+				RequestDispatcher rd = request.getRequestDispatcher("index.html");
+				rd.forward(request, response);
+			}else {
+				response.getWriter().println("Vehicle details were not entered");
+			}
 		}else {
-			response.getWriter().println("Data was not entered");
+			response.getWriter().println("User details were not entered");
 		}
 	}
 

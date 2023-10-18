@@ -7,6 +7,8 @@ public class Vehicle {
 	private String vehiclePlate;
 	private String engineType;
 	
+	
+	
 	public Vehicle(String make, String model, String vehiclePlate, String engineType) {
 		super();
 		this.make = make;

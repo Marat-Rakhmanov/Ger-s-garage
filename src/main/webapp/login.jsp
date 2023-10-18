@@ -13,7 +13,7 @@
            <form action="LoginServlet" method="post">
                <table>
                     <tr>
-                        <td>User name: </td>
+                        <td>Email address: </td>
                         <td><input type="text" name="email" required='required'></td>
                     <tr>
                     <tr>
