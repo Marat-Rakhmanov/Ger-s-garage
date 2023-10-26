@@ -44,13 +44,13 @@
                         	<td>Phone number: </td>
                         	<td><input type="text" name="phone" required='required'></td>
                     	</tr>
-                    	<!-- 
+                    	
                     	<tr>
                         	<td>Gender: </td>
-                        	<td><input type="radio" name="gender" value="male" required='required'>Male</td>
-                        	<td><input type="radio" name="gender" value="female" required="required">Female</td>
+                        	<td><input id="male" type="radio" name="gender" value="male"><label for="male">Male</label></td>
+                        	<td><input id="female" type="radio" name="gender" value="female"><label for="female">Female</label></td>
                     	</tr>
-                    	-->
+                    	
                     	<tr>
                         	<td>Birthday: </td>
                         	<td><input type="date" name="birthday" required='required'></td>
@@ -66,10 +66,19 @@
             			<label>Vehicle plate: <br/><input type="text" name="vehiclePlate"/></label><br/>
             			<fieldset>
             				<legend>Engine type</legend>
-            					<input type="radio" name="engineType" value="petrol" checked="checked"/>Petrol <br/>
-            					<input type="radio" name="engineType" value="disiel"/>Disiel <br/>
-            					<input type="radio" name="engineType" value="electric"/>Electric<br/>
-            					<input type="radio" name="engineType" value="hybrid"/>Hybrid
+            					
+            					<input id="petrol" type="radio" name="engineType" value="petrol" checked="checked">
+            					<label for="petrol">Petrol</label><br/>
+            					
+            					<input id="disiel" type="radio" name="engineType" value="disiel">
+            					<label for="disiel">Disiel</label><br/>
+            					
+            					<input id="electric" type="radio" name="engineType" value="electric">
+            					<label for="electric">Electric</label><br/>
+            					
+            					<input id="hybrid" type="radio" name="engineType" value="hybrid">
+            					<label for="hybrid">Hybrid</label>
+            					
             			</fieldset>
             	</fieldset>
             	 
