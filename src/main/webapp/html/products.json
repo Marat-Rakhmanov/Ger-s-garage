@@ -1,0 +1,59 @@
+[
+	{
+		"id": 1,
+		"name": "Xenon light",
+		"price": 21,
+		"image": "image/xenonlight.jpg"
+		
+	},
+	{
+		"id": 2,
+		"name": "Shock absorber",
+		"price": 19,
+		"image": "image/shock absorber.jpg"
+		
+	},
+	{
+		"id": 3,
+		"name": "Air filter",
+		"price": 16,
+		"image": "image/air_filter.jpg"
+		
+	},
+	{
+		"id": 4,
+		"name": "Brake disc pads",
+		"price": 7,
+		"image": "image/brake_disc_pads.jpg"
+		
+	},
+	{
+		"id": 5,
+		"name": "Wind deflector",
+		"price": 6,
+		"image": "image/wind_deflector.jpeg"
+		
+	},
+	{
+		"id": 6,
+		"name": "Car tire",
+		"price": 45,
+		"image": "image/car_tire.jpeg"
+		
+	},
+	{
+		"id": 7,
+		"name": "Exaust backbox",
+		"price": 15,
+		"image": "image/exaust_backbox.jpeg"
+		
+	},
+	{
+		"id": 8,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	}
+	
+]
