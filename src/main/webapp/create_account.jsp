@@ -5,57 +5,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/loginStye.css">
+
 </head>
 <body>
+	<%@ page import  ="garage.User" %>
+	<%User user = (User) request.getAttribute("user"); 
+	String message = (String) request.getAttribute("message");
 
-<body>
+	if(user == null) user = new User();
+	if(message == null) message ="";
+
+	%>
+	<p><i>${message}</i></p>
        <div align="left">
        <form action="SignUp" method="post">
        
        		<fieldset>
            		<legend>User identification</legend>
            
-               		<table>
-                    	<tr>
-                        	<td>First name: </td>
-                        	<td><input type="text" name="fname" required='required'></td>
-                   		</tr>
-                    	<tr>
-                        	<td>Surname: </td>
-                        	<td><input type="text" name="surname" required='required'></td>
-                    	</tr>
-                   	 	<tr>
-                        	<td>Password: </td>
-                        	<td><input type="password" name="password" required='required'></td>
-                   		</tr>
-                    	<tr>
-                        	<td>Confirm Password: </td>
-                        	<td><input type="password" name="cnfpassword" required='required'></td>
-                    	</tr>
-                     	<tr>
-                        	<td>Licence: </td>
-                        	<td><input type="text" name="licence" required='required'></td>
-                    	</tr>
-                    	<tr>
-                        	<td>Email: </td>
-                        	<td><input type="text" name="email" required='required'></td>
-                    	</tr>
-                    	<tr>
-                        	<td>Phone number: </td>
-                        	<td><input type="text" name="phone" required='required'></td>
-                    	</tr>
-                    	
-                    	<tr>
-                        	<td>Gender: </td>
-                        	<td><input id="male" type="radio" name="gender" value="male"><label for="male">Male</label></td>
-                        	<td><input id="female" type="radio" name="gender" value="female"><label for="female">Female</label></td>
-                    	</tr>
-                    	
-                    	<tr>
-                        	<td>Birthday: </td>
-                        	<td><input type="date" name="birthday" required='required'></td>
-                    	</tr>
-                	</table>
+               		<div class="">First name:</div>
+                    <input type="text" name="fname" required='required'>
+
+                    <div class="">Surname:</div>
+                    <input type="text" name="surname" required='required'>
+                    
+                   	<div class="">Password:</div>
+                    <input id="pass" type="password" name="password" required='required'>
+                   		
+                   	<div class="">Confirm Password:</div>
+                    <input id="confirm_pass" type="password" name="cnfpassword" required='required' onkeyup="validate_password()">
+                    <span id="wrong_pass_alert"></span>
+                    
+                   	<div class="">Licence:</div>
+                    <input type="text" name="licence" required='required'>
+                    
+                    <div class="">Email:</div>
+                    <input type="text" name="emailAddress" required='required'>
+                    <p><i>${message}</i></p>
+                    
+                    <div class="">Phone number:</div>
+                    <input type="text" name="phone" required='required'>
+                    
+                    <div class="">Gender:</div>
+                    <input id="male" type="radio" name="gender" value="male"><label for="male">Male</label>
+                    <input id="female" type="radio" name="gender" value="female"><label for="female">Female</label>
+                    
+                    <div class="">Birthday:</div>
+                    <input type="date" name="birthday" required='required'>
             
             	</fieldset>
             	   
@@ -80,9 +77,9 @@
             					<label for="hybrid">Hybrid</label>
             					
             			</fieldset>
-            	</fieldset>
+            	</fieldset><br/>
             	 
-            	<input type="submit" value="Login">
+            	<input id="create" type="submit" value="Login">
         </form>
         </div>
         <script>
@@ -104,7 +101,14 @@
                     document.getElementById('create').style.opacity = (1);
                 }
             }
-
+            function wrong_pass_alert() {
+                if (document.getElementById('pass').value != "" &&
+                    document.getElementById('confirm_pass').value != "") {
+                    alert("Your response is submitted");
+                } else {
+                    alert("Please fill all the fields");
+                }
+            }
 
         </script>
 </body>

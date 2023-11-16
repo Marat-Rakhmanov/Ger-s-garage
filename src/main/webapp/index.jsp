@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 a:link, a:visited {
   background-color: white;
@@ -43,7 +46,5 @@ body, html {
 		<a href="html/Booking.html" target="_self">Booking</a>
 		<a href="welcome.jsp" target="_self">Log out</a>
 	</div>
-
-
 </body>
 </html>

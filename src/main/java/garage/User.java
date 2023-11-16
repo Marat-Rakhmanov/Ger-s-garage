@@ -2,27 +2,31 @@ package garage;
 
 public class User {
 	
-	private int UserID;
+	private static int UserID;
 	private String fname;
 	private String surname;
 	private String password;
 	private String licence;
-	private String email;
+	private String EmailAddress;
 	private String phone;
 	private String gender;
 	private String birthday;
 	
 	private static int currentUserIDNumber = 0;
 	
-	public User(String fname, String surname, String password, String licence, String email, String phone, String gender,
+	public User() {
+
+	}
+	
+	public User(String fname, String surname, String password, String licence, String EmailAddress, String phone, String gender,
 			String birthday) {
 		super();
-		this.UserID = generateID();
+		User.UserID = generateID();
 		this.fname = fname;
 		this.surname = surname;
 		this.password = password;
 		this.licence = licence;
-		this.email = email;
+		this.EmailAddress = EmailAddress;
 		this.phone = phone;
 		this.gender = gender;
 		this.birthday = birthday;
@@ -34,11 +38,11 @@ public class User {
 		currentUserIDNumber++;
 		return currentUserIDNumber;
 	}
-	public int getUserID() {
+	public static int getUserID() {
 		return UserID;
 	}
 	public void setUserID(int userID) {
-		this.UserID = userID;
+		User.UserID = userID;
 	}
 
 
@@ -66,11 +70,11 @@ public class User {
 	public void setLicence(String licence) {
 		this.licence = licence;
 	}
-	public String getEmail() {
-		return email;
+	public String getEmailAddress() {
+		return EmailAddress;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String EmailAddress) {
+		this.EmailAddress = EmailAddress;
 	}
 	public String getPhone() {
 		return phone;

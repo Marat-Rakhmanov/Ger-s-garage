@@ -54,6 +54,140 @@
 		"price": 50,
 		"image": "image/clutch_kits.jpeg"
 		
+	},
+		{
+		"id": 9,
+		"name": "Battery",
+		"price": 57,
+		"image": "image/car_battery.webp"
+		
+	},
+		{
+		"id": 10,
+		"name": "engine oil",
+		"price": 12,
+		"image": "image/engine_oil.webp"
+		
+	},
+		{
+		"id": 11,
+		"name": "Clutch kits",
+		"price": 8,
+		"image": "image/wiper_blades.webp"
+		
+	},
+		{
+		"id": 12,
+		"name": "Windscreen",
+		"price": 200,
+		"image": "image/windscreen.jpg"
+		
+	},
+		{
+		"id": 13,
+		"name": "Water pump",
+		"price": 25,
+		"image": "image/water_pump.jpg"
+		
+	},
+		{
+		"id": 14,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 15,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 16,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 17,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 18,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 19,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 20,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 21,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 24,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 23,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 25,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 26,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 27,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
+	},
+		{
+		"id": 28,
+		"name": "Clutch kits",
+		"price": 50,
+		"image": "image/clutch_kits.jpeg"
+		
 	}
+	
 	
 ]

@@ -5,56 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/loginStyle.css">
 </head>
 <body>
-       <div align="left">
-           <h1>Login Form</h1>
+       <div class="container" align="left">
+           <h1 class="label">Login Form</h1>
 
-           <form action="LoginServlet" method="post">
-               <table>
-                    <tr>
-                        <td>Email address: </td>
-                        <td><input type="text" name="email" required='required'></td>
-                    <tr>
-                    <tr>
-                        <td>Password: </td>
-                        <td><input type="password" name="password" required='required'></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" value="Login"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <p>Do not have an account yet? <a href="create_account.jsp">Register</a></p>
-                        </td>
+           <form class="login_form" action="LoginServlet" method="post" name="form" onsubmit="return validated()">
+           		<div class="font">Email</div>
+           		<input type="text" name="emailAddress">
+           		<div id="email_error">Please fill up your Email</div>
+           		<div class="font font2">Password</div>
+           		<input type="password" name="password">
+           		<div id="pass_error">Please fill up your password</div>
+           		<p><i>${message}</i><p>
+           		<button type="submit">Login</button>
 
-                    </tr>
-                </table>
+                <p>Do not have an account yet? <a href="create_account.jsp">Register</a></p>
+
             </form>
         </div>
-        <script>
-            function validate_password() {
-
-                var pass = document.getElementById('pass').value;
-                var confirm_pass = document.getElementById('confirm_pass').value;
-                if (pass != confirm_pass) {
-                    document.getElementById('wrong_pass_alert').style.color = 'red';
-                    document.getElementById('wrong_pass_alert').innerHTML
-                        = '☒ Use same password';
-                    document.getElementById('create').disabled = true;
-                    document.getElementById('create').style.opacity = (0.4);
-                } else {
-                    document.getElementById('wrong_pass_alert').style.color = 'green';
-                    document.getElementById('wrong_pass_alert').innerHTML =
-                        '🗹 Password Matched';
-                    document.getElementById('create').disabled = false;
-                    document.getElementById('create').style.opacity = (1);
-                }
-            }
-
-
-        </script>
+	<script src="script/valid.js"></script>
 </body>
 </html>

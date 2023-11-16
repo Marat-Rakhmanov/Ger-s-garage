@@ -9,9 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+
 
 /**
  * Servlet implementation class Register
@@ -23,41 +25,44 @@ public class LoginServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String email = request.getParameter("email");
+		String email = request.getParameter("emailAddress");
 		String password = request.getParameter("password");
-		
+		String correctPassword = null;
+		String message = "";
+		String url = "";
 		try {
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/customers", "root", "root1234");
-			PreparedStatement ps = con.prepareStatement("select email from user where email=? and password=?");
-			ps.setString(1, email);
-			ps.setString(2, password);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()){
-				RequestDispatcher rd = request.getRequestDispatcher("index.html");
-				rd.forward(request, response);
+			
+			Statement statement = con.createStatement();
+			statement.executeQuery("select password from user where emailAddress='" + email + "'");
+			ResultSet rs = statement.getResultSet();
+			
+			if(rs.next()) {
+				correctPassword = rs.getString(1);
+			}
+			statement.close();
+			if(email.length() == 0 || password.length() == 0) {
+				message ="Please fill out all boxes";
+				url = "/login.jsp";
 			}else {
-				RequestDispatcher rd = request.getRequestDispatcher("create_account.jsp");
-				rd.forward(request, response);
+				
+				if(correctPassword.equals(password)) {
+					RequestDispatcher rd = request.getRequestDispatcher("index.html");
+					rd.forward(request, response);
+				}else {
+					message = "Incorrect email address or password.<br/>" + "Please try again";
+					url = "/login.jsp";
+				}
 			}
 			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 		
-		
-//		if(rDao.insert(member)){
-//			RequestDispatcher rd = request.getRequestDispatcher("html/index.html");
-//			rd.forward(request, response);
-//		}else {
-//			RequestDispatcher rd = request.getRequestDispatcher("create_account.jsp");
-//			rd.forward(request, response);
-//		}
-	
+		request.setAttribute("message", message);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 }
