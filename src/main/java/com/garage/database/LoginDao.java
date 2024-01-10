@@ -14,7 +14,7 @@ import garage.Vehicle;
 
 public class LoginDao {
 	
-	private static String dbUrl = "jdbc:mysql://localhost:3306/customers";
+	private static String dbUrl = "jdbc:mysql://localhost:3306/practice";
 	private static String dbUname = "root";
 	private static String dbPassword = "root1234";
 	private static String dbDriver = "com.mysql.cj.jdbc.Driver";
@@ -50,7 +50,7 @@ public class LoginDao {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setLong(1, User.getUserID());
-			ps.setString(2, user.getEmailAddress());
+			ps.setString(2, User.getEmailAddress());
 			ps.setString(3, user.getFname());
 			ps.setString(4, user.getSurname());
 			ps.setString(5, user.getPassword());
@@ -84,18 +84,37 @@ public class LoginDao {
 			return false;
 		}
 	}
+	
+	public static boolean vehiclePlateExists(String vehiclePlate) {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		ResultSet rs = null;
+		String query = "select vehiclePlate from usercars " + "where vehiclePlate =?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, vehiclePlate);
+			rs = ps.executeQuery();
+			return rs.next();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public static int insertVehicle (Vehicle vehicle) {
 		
 		loadDriver(dbDriver);
 		Connection con = getConnection();
 		
-		String sql ="insert into usercars (vehiclePlateID, vehiclePlate, userID, make, model, engineType)" + " values(?,?,?,?,?,?)";
+		
+		
+		String sql ="insert into usercars (vehiclePlateID, vehiclePlate, EmailAddress, make, model, engineType)" + " values(?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setLong(1, vehicle.getVehiclePlateID());
+			ps.setLong(1, Vehicle.getVehiclePlateID());
 			ps.setString(2, vehicle.getVehiclePlate());
-			ps.setLong(3, User.getUserID());
+			ps.setString(3, User.getEmailAddress());
 			ps.setString(4, vehicle.getMake());
 			ps.setString(5, vehicle.getModel());
 			ps.setString(6, vehicle.getEngineType());
@@ -107,6 +126,8 @@ public class LoginDao {
 			return 0;
 		}
 	}
+	
+
 	public static boolean checkPassword (String emailAddress, String password) throws SQLException {
 		
 		String correctPassword = null;
@@ -114,7 +135,7 @@ public class LoginDao {
 		Connection con = getConnection();
 		
 		Statement statement = con.createStatement();
-		statement.executeQuery("select password from user where emailAddress='" + emailAddress + "'");
+		statement.executeQuery("select password from user where EmailAddress='" + emailAddress + "'");
 		ResultSet rs = statement.getResultSet();
 		
 		if(rs.next()) {
@@ -126,5 +147,32 @@ public class LoginDao {
 		}else {
 			return false;
 		}
+	}
+	
+	public User userlogin (String email, String password) throws SQLException {
+		loadDriver(dbDriver);
+		Connection con = getConnection();
+		ResultSet rs;
+		User user = null;
+		
+		String sql = "select * from user where EmailAddress=? and password=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, email);
+		ps.setString(2, password);
+		rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			user = new User();
+			user.setUserID(rs.getInt("userID"));
+			user.setEmail(rs.getString("EmailAddress"));
+			user.setFname(rs.getString("fname"));
+			user.setSurname(rs.getString("surname"));
+			user.setLicence(rs.getString("licence"));
+			user.setPhone(rs.getString("phone"));
+			user.setGender(rs.getString("gender"));
+			user.setBirthday(rs.getString("birthday"));
+		}
+		return user;
+		
 	}
 }

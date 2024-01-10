@@ -2,17 +2,26 @@ package garage;
 
 public class Vehicle {
 	
-	private int vehiclePlateID;
+	private static int vehiclePlateID;
 	private String make;
 	private String model;
 	private String vehiclePlate;
 	private String engineType;
 	
-	private static int currentUserIDNumber = 0;
+	private static int currentVehileIDNumber = 0;
 	
+	
+	
+	public Vehicle() {
+		make = "";
+		model = "";
+		vehiclePlate = "";
+		engineType = "";
+	}
+
 	public Vehicle(String make, String model, String vehiclePlate, String engineType) {
 		super();
-		this.vehiclePlateID = generateID();
+		Vehicle.vehiclePlateID = generateID();
 		this.make = make;
 		this.model = model;
 		this.vehiclePlate = vehiclePlate;
@@ -21,8 +30,8 @@ public class Vehicle {
 	
 	public int generateID() {
 
-		currentUserIDNumber++;
-		return currentUserIDNumber;
+		currentVehileIDNumber++;
+		return currentVehileIDNumber;
 	}
 
 	public String getMake() {
@@ -57,12 +66,12 @@ public class Vehicle {
 		this.engineType = engineType;
 	}
 
-	public int getVehiclePlateID() {
+	public static int getVehiclePlateID() {
 		return vehiclePlateID;
 	}
 
 	public void setVehiclePlateID(int vehiclePlateID) {
-		this.vehiclePlateID = vehiclePlateID;
+		Vehicle.vehiclePlateID = vehiclePlateID;
 	}
 
 

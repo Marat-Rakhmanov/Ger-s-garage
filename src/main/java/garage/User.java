@@ -1,5 +1,6 @@
 package garage;
 
+
 public class User {
 	
 	private static int UserID;
@@ -7,7 +8,7 @@ public class User {
 	private String surname;
 	private String password;
 	private String licence;
-	private String EmailAddress;
+	private static String EmailAddress;
 	private String phone;
 	private String gender;
 	private String birthday;
@@ -15,7 +16,14 @@ public class User {
 	private static int currentUserIDNumber = 0;
 	
 	public User() {
-
+		fname = "";
+		surname = "";
+		password = "";
+		licence = "";
+		EmailAddress = "";
+		phone = "";
+		gender = "";
+		birthday = "";
 	}
 	
 	public User(String fname, String surname, String password, String licence, String EmailAddress, String phone, String gender,
@@ -26,7 +34,7 @@ public class User {
 		this.surname = surname;
 		this.password = password;
 		this.licence = licence;
-		this.EmailAddress = EmailAddress;
+		User.EmailAddress = EmailAddress;
 		this.phone = phone;
 		this.gender = gender;
 		this.birthday = birthday;
@@ -44,7 +52,6 @@ public class User {
 	public void setUserID(int userID) {
 		User.UserID = userID;
 	}
-
 
 	public String getFname() {
 		return fname;
@@ -70,11 +77,11 @@ public class User {
 	public void setLicence(String licence) {
 		this.licence = licence;
 	}
-	public String getEmailAddress() {
+	public static String getEmailAddress() {
 		return EmailAddress;
 	}
 	public void setEmail(String EmailAddress) {
-		this.EmailAddress = EmailAddress;
+		User.EmailAddress = EmailAddress;
 	}
 	public String getPhone() {
 		return phone;

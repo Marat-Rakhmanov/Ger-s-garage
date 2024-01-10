@@ -7,16 +7,22 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+//import java.io.PrintWriter;
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Statement;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+
 import com.garage.database.LoginDao;
 import garage.User;
 import garage.Vehicle;
 //import garage.Vehicle;
+ 
 
-/**
- * Servlet implementation class SignUp
- */
 @WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,21 +58,26 @@ public class SignUp extends HttpServlet {
 			url = "/create_account.jsp";
 		}else {
 			
-			if(LoginDao.emailExists(user.getEmailAddress())) {
+			if(LoginDao.emailExists(User.getEmailAddress())) {
 				
 				message = "This email address already exist<br/>"
 						+ "Please enter another one.";
 				url = "/create_account.jsp";
-			}else {
 				
+			}else if(LoginDao.vehiclePlateExists(vehiclePlate)) {
+				message =" This vehiclePlate already exists";
+				url = "/create_account.jsp";
+			}
+			
+			
+			else {
 				LoginDao.insert(user);
 				LoginDao.insertVehicle(vehicle);
-				url = "/index.html";
+				url = "/login.jsp";
 			}
 		}
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user", user);
+
 		request.setAttribute("message", message);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

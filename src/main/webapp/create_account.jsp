@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@ page import  ="garage.User" %>
-	<%User user = (User) request.getAttribute("user"); 
+	<%User user = (User) request.getAttribute("email"); 
 	String message = (String) request.getAttribute("message");
 
 	if(user == null) user = new User();
