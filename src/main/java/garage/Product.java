@@ -5,7 +5,7 @@ public class Product {
 	private int id;
 	private String name;
 	private String category;
-	private String price;
+	private Double price;
 	private String image;
 	
 	
@@ -15,7 +15,7 @@ public class Product {
 	}
 
 
-	public Product(int id, String name, String category, String price, String image) {
+	public Product(int id, String name, String category, Double price, String image) {
 		
 		this.id = id;
 		this.name = name;
@@ -55,12 +55,12 @@ public class Product {
 	}
 
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -73,12 +73,17 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
-
-	public void setPrice(double double1) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", image="
+				+ image + "]";
+	}
+
+//	public void setPrice(double double1) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//	
 	
 }
