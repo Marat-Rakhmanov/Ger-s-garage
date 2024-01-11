@@ -9,9 +9,7 @@
 		if(session.getAttribute("email") == null){
 			response.sendRedirect("login.jsp");
 		}
-	%>
-    <%
-	
+     	
     	ProductDao pd = new ProductDao(DbCon.getConnection());
     	List<Product> products = pd.getAllProducts();
     %>

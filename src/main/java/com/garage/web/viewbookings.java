@@ -33,20 +33,42 @@ public class viewbookings extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/practice", "root", "root1234");
 			String sql;
-			sql = "select * from bookings";
+			sql = "select usercars.make, usercars.model, usercars.enginetype, bookings.vehiclePlate, \r\n"
+					+ "bookings.booking_date, bookings.service_type\r\n"
+					+ "from usercars\r\n"
+					+ "right join bookings on usercars.vehiclePlate =bookings.vehiclePlate\r\n"
+					+ "order by usercars.vehiclePlate;";
 			Statement stm = con.createStatement();
 			rs = stm.executeQuery(sql);
 			
-	        out.println("<table cellspacing='0' width='350px' border='1'>");
+	        out.println("<table cellspacing='0' width='550px' border='1'>");
             out.println("<tr>");
-            out.println("<td> EmpID </td>");
-            out.println("<td> First name </td>");
-            out.println("<td> Last name </td>");
-            out.println("<td> Edit </td>");
+            out.println("<td> Make </td>");
+            out.println("<td> Model </td>");
+            out.println("<td> EngineType </td>");
+            out.println("<td> VehiclePlate </td>");
+            out.println("<td> Booking date </td>");
+            out.println("<td> Service type </td>");
             out.println("<td> Delete </td>");
             out.println("</tr>");
             
+            while(rs.next()) {
+            	
+                out.println("<tr>");
+                out.println("<td>"  + rs.getString("make")   +  "</td>");
+                out.println("<td>"  + rs.getString("model")   +  "</td>");
+                out.println("<td>"  + rs.getString("engineType")   +  "</td>");
+                out.println("<td>"  + rs.getString("vehiclePlate")   +  "</td>");
+                out.println("<td>"  + rs.getString("booking_date")   +  "</td>");
+                out.println("<td>"  + rs.getString("service_type")   +  "</td>");
+                
+                out.println("<td>"  + "<a href='deleteBookings?vehiclePlate=" +  rs.getString("vehiclePlate")  + "'> Delete </a>" + "</td>");
+                out.println("<tr>");
+                
+                
+            }
             
+            out.println("</table>");
             
 	      } catch (ClassNotFoundException ex) {
 	            Logger.getLogger(viewbookings.class.getName()).log(Level.SEVERE, null, ex);

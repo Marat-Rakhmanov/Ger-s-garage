@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,16 +37,18 @@ public class BookingServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/practice", "root", "root1234");
+			
 			String vehiclePlate = request.getParameter("vehiclePlate");
 			String message = request.getParameter("comments");
 			String service_type = request.getParameter("serviceType");
 			String booking_date = request.getParameter("bookingDate");
 			
 			Booking booking = new Booking(vehiclePlate, message, service_type, booking_date);
-			
+			HttpSession session = request.getSession();
+			String email = (String) session.getAttribute("email");
 			pst = con.prepareStatement("insert into bookings(EmailAddress, vehiclePlate, message, service_type, booking_date) values(?,?,?,?,?)");
 			
-			pst.setString(1, User.getEmailAddress());
+			pst.setString(1, email);
 			pst.setString(2, booking.getVehiclePlate());
 			pst.setString(3, booking.getMessage());
 			pst.setString(4, booking.getService_type());

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-a:link, a:visited{
+a:link, a:visited, input[type="submit"]{
   background-color: white;
   color: black;
   border: 2px solid green;
@@ -16,7 +16,7 @@ a:link, a:visited{
   display: inline-block;
 }
 
-a:hover, a:active {
+a:hover, a:active, input[type="submit"]:hover, input[type="submit"]:active {
   background-color: green;
   color: white;
 }
@@ -58,6 +58,7 @@ button {
 }
 a.button, .form.button{
 	margin-left:auto;
+	
 }
 </style>
 </head>
@@ -87,11 +88,10 @@ a.button, .form.button{
 	        PreparedStatement pst;
 	        ResultSet rs;
 	        
-	        String EmailAddress = request.getParameter("emailAddress");
 	        Class.forName("com.mysql.jdbc.Driver");
 	        con = DriverManager.getConnection("jdbc:mysql://localhost/practice","root","root1234");
-	        
-            String query = "select * from usercars where EmailAddress = '" + EmailAddress + "'";
+	        String email = (String) session.getAttribute("email");
+            String query = "select * from usercars where EmailAddress = '" + email + "'";
             Statement st = con.createStatement();
             
 			rs = st.executeQuery(query);
@@ -102,7 +102,7 @@ a.button, .form.button{
 		%>
 		
 		<div class="container">
-		<form method="GET" action="BookingServlet">
+		<form method="GET" action="">
             
             <table width="400px" border="1">
                 <tr>
@@ -129,20 +129,16 @@ a.button, .form.button{
                     <td>Engine type</td>
                     <td><%= rs.getString("engineType") %></td>
                 </tr>
-                
-                <tr>
-                    <td colspan="2"> <input type="submit" value="submit"></td>
-                 
-                </tr>
-                
+
                 
             </table>
  
             <%
             	}
             %>
-        </form>
-        <p><a href="addVehicle">Add vehicle</a></p>
+        </form><br/>
+        <a href="addvehicle.jsp">Add vehicle</a>
+        <a href="deleteVehicle.jsp">Delete vehicle</a>
         </div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>

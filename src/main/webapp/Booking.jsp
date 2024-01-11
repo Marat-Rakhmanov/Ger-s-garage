@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-a:link, a:visited {
+a:link, a:visited, input[type="submit"]{
   background-color: white;
   color: black;
   border: 2px solid green;
@@ -18,7 +18,7 @@ a:link, a:visited {
 	width: 350px;
 }
 
-a:hover, a:active {
+a:hover, a:active, input[type="submit"]:hover, input[type="submit"]:active{
   background-color: green;
   color: white;
 }
@@ -58,21 +58,21 @@ body, html {
 				<legend>Select a vehicel for a booking</legend>
 					<p>Select a vehicle using vehicle plate.</p>
                     	<label>Vehicle Plate
-                    	<input type="text" name="vehiclePlate" id="vehiclePlateID"/></label>               	
+                    	<input type="text" name="vehiclePlate" id="vehiclePlateID" required/></label>               	
 			</fieldset>
 			<fieldset>
 				<legend>Message from a user</legend>
-				<textarea name="comments" cols="30" rows="5" maxlength="55">Leave a short comment what the issue is...</textarea>
+				<textarea name="comments" cols="30" rows="5" maxlength="55" required >Leave a short comment what the issue is...</textarea>
 				
 			</fieldset>
 			<fieldset>
 				<legend>Type of service</legend>
-					<input type="radio" name="serviceType" value="annualService"/>Annual Service<br/>
+					<input type="radio" name="serviceType" value="annualService" required/>Annual Service<br/>
 					<input type="radio" name="serviceType" value="majorService"/>Major Service<br/>
 					<input type="radio" name="serviceType" value="repairFault"/>Repair/Fault<br/>
 					<input type="radio" name="serviceType" value="majorRapair"/>Major Repair<br/><br/>
 					<label for="bookingDate">Date</label>
-					<input type="date" name="bookingDate"/>
+					<input type="date" name="bookingDate" required/>
 				
 			</fieldset>
 			<input type="submit" value="Submit"/>

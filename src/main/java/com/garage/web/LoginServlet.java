@@ -76,6 +76,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(); 
 		session.setAttribute("email", email);
 		request.setAttribute("message", message);
+//		response.sendRedirect("HomePage");
 		
 		// forward the request and response to the view
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

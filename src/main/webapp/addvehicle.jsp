@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="addCar" method="post">
+
+	
+	<form action="addVehicle" method="post">
 		<fieldset>
             <legend>Vehicle details</legend>
             	<label>Make: <br/><input type="text" name="make" placeholder="BMW, Mercedes, Volkswagen ..."/></label><br/>
@@ -26,9 +30,11 @@
     					<input id="hybrid" type="radio" name="engineType" value="hybrid">
     					<label for="hybrid">Hybrid</label>
             					
-        			</fieldset>
+        			</fieldset><br/>
+        			<input type="submit" value="submit">
         	</fieldset>
+        	
 	</form>
-
+	
 </body>
 </html>
