@@ -15,6 +15,7 @@
       
 	<% 
 		if(session.getAttribute("email") != null){ %>
+		
 			
 		<li class="nav-item">
           <a class="nav-link disabled" href="orders.jsp">Orders</a>
