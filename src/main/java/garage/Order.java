@@ -3,26 +3,26 @@ package garage;
 public class Order extends Product{
 
 	private int orderId;
-	private int uid;
-	private int qunatity;
+	private String email;
+	private int quantity;
 	private String date;
 	
 	public Order() {
 		
 	}
 
-	public Order(int orderId, int uid, int qunatity, String date) {
+	public Order(int orderId, String email, int qunatity, String date) {
 		super();
 		this.orderId = orderId;
-		this.uid = uid;
-		this.qunatity = qunatity;
+		this.email = email;
+		this.quantity = qunatity;
 		this.date = date;
 	}
 
-	public Order(int uid, int qunatity, String date) {
+	public Order(String email, int quantity, String date) {
 		super();
-		this.uid = uid;
-		this.qunatity = qunatity;
+		this.email = email;
+		this.quantity = quantity;
 		this.date = date;
 	}
 
@@ -34,20 +34,20 @@ public class Order extends Product{
 		this.orderId = orderId;
 	}
 
-	public int getUid() {
-		return uid;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public int getQunatity() {
-		return qunatity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setQunatity(int qunatity) {
-		this.qunatity = qunatity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getDate() {
@@ -60,7 +60,7 @@ public class Order extends Product{
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", uid=" + uid + ", qunatity=" + qunatity + ", date=" + date + "]";
+		return "Order [orderId=" + orderId + ", email=" + email + ", qunatity=" + quantity + ", date=" + date + "]";
 	}
 	
 	
