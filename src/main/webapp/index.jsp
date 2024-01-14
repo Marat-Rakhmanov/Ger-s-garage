@@ -73,7 +73,7 @@ a.button, .form.button{
 
 	<div class="bg">
 		<a href="index.jsp">Home</a>
-		<a href="Parts.jsp" target="_self">Parts</a>
+		<a href="Parts.jsp" target="_self">Vehicle Parts</a>
 		<a href="Booking.jsp" target="_self">Booking</a>
 		<a href="LogOut" target="_self">Log Out</a>
 <!-- 		<form  action="LogOut" method="get"> -->

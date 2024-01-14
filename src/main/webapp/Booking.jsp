@@ -63,7 +63,6 @@ body, html {
 			<fieldset>
 				<legend>Message from a user</legend>
 				<textarea name="comments" cols="30" rows="5" maxlength="55" required >Leave a short comment what the issue is...</textarea>
-				
 			</fieldset>
 			<fieldset>
 				<legend>Type of service</legend>
@@ -72,12 +71,10 @@ body, html {
 					<input type="radio" name="serviceType" value="repairFault"/>Repair/Fault<br/>
 					<input type="radio" name="serviceType" value="majorRapair"/>Major Repair<br/><br/>
 					<label for="bookingDate">Date</label>
-					<input type="date" name="bookingDate" required/>
-				
+					<input type="date" name="bookingDate" required/>				
 			</fieldset>
 			<input type="submit" value="Submit"/>
 		</div>
-		
 	</form>
 	<p><a href="viewbookings">View bookings</a></p>
 	

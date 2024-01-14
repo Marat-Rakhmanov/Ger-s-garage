@@ -32,7 +32,7 @@
 			ProductDao pDao = new ProductDao(DbCon.getConnection());
 			cartProduct = pDao.getCartProducts(cart_list);
 			double total = pDao.getTotalCartPrice(cart_list);
-			request.setAttribute("cart_list", cart_list); //lesson 8 9:30 min
+			request.setAttribute("cart_list", cart_list);                                 //lesson 8 9:30 min then i put this in navbar to display a number of items in cart as a number
 			request.setAttribute("total", total);
 		}
 
@@ -45,7 +45,7 @@
 			<thead>
 				<tr>
 					<th scope="col">Name</th>
-					<th scope="col">Category</th>
+					<th scope="col">Category</th> <!-- //lesson 6 -->
 					<th scope="col">Price</th>
 					<th scope="col">Buy Now</th>
 					<th scope="col">Cancel</th>
