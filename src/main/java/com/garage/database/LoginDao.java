@@ -128,26 +128,28 @@ public class LoginDao {
 	}
 	
 
-	public static boolean checkPassword (String emailAddress, String password) throws SQLException {
-		
-		String correctPassword = null;
-		loadDriver(dbDriver);
-		Connection con = getConnection();
-		
-		Statement statement = con.createStatement();
-		statement.executeQuery("select password from user where EmailAddress='" + emailAddress + "'");
-		ResultSet rs = statement.getResultSet();
-		
-		if(rs.next()) {
-			correctPassword = rs.getString(1);
-		}
-		statement.close();
-		if(correctPassword.equals(password)) {
-			return true;
-		}else {
-			return false;
-		}
+	public static boolean checkPassword(String emailAddress, String password) throws SQLException {
+
+	    String correctPassword = null;
+	    loadDriver(dbDriver);
+	    Connection con = getConnection();
+
+	    String sql = "SELECT password FROM user WHERE EmailAddress = ?";
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, emailAddress);
+
+	    ResultSet rs = ps.executeQuery();
+
+	    if (rs.next()) {
+	        correctPassword = rs.getString(1);
+	    }
+
+	    rs.close();
+	    ps.close();
+
+	    return correctPassword != null && correctPassword.equals(password);
 	}
+
 	
 	public User userlogin (String email, String password) throws SQLException {
 		loadDriver(dbDriver);

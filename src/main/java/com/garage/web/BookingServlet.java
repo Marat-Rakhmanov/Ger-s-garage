@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import garage.Booking;
-import garage.User;
+
 
 
 @WebServlet("/BookingServlet")

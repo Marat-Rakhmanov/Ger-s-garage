@@ -12,15 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import com.garage.database.LoginDao;
-
-import garage.User;
-
-
 
 
 /**
@@ -28,60 +23,60 @@ import garage.User;
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-    
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String email = request.getParameter("emailAddress");
 		String password = request.getParameter("password");
-        
+
 		String correctPassword = null;
 		String message = "";
 		String url = "";
+
 		try {
-			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practice", "root", "root1234");
-			
-			Statement statement = con.createStatement();
-			statement.executeQuery("select password from user where EmailAddress='" + email + "'");
-			ResultSet rs = statement.getResultSet();
-			
-			if(rs.next()) {
+
+			String sql = "SELECT password FROM user WHERE EmailAddress = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, email);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
 				correctPassword = rs.getString(1);
 			}
-			statement.close();
-			if(email.length() == 0 || password.length() == 0) {
-				message ="Please fill out all boxes";
+
+			rs.close();
+			ps.close();
+			con.close();
+
+			if (email.length() == 0 || password.length() == 0) {
+				message = "Please fill out all boxes";
 				url = "/login.jsp";
-			}else {
-				
-				if(correctPassword.equals(password)) {
-						
+			} else {
+				if (correctPassword != null && correctPassword.equals(password)) {
 					url = "/index.jsp";
-
-
-				}else {
-					message = "Incorrect email address or password.<br/>" + "Please try again";
+				} else {
+					message = "Incorrect email address or password.<br/>Please try again";
 					url = "/login.jsp";
-
 				}
 			}
-			
-		}catch(SQLException | ClassNotFoundException e) {
+
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		//store the user and message in the session
-		HttpSession session = request.getSession(); 
+
+		// store the user and message in the session
+		HttpSession session = request.getSession();
 		session.setAttribute("email", email);
 		request.setAttribute("message", message);
-//		response.sendRedirect("HomePage");
-		
+
 		// forward the request and response to the view
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-		
 	}
-
 }
+
