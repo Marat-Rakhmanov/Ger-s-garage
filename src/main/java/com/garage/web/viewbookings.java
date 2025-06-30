@@ -61,7 +61,7 @@ public class viewbookings extends HttpServlet {
                 out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("model")) +  "</td>");
                 out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("engineType")) +  "</td>");
                 out.println("<td>" + StringEscapeUtils.escapeHtml4(rs.getString("vehiclePlate")) + "</td>");
-                out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("booking_date")) +  "</td>");
+                out.println("<td>"  + rs.getString("booking_date")   +  "</td>");
                 out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("service_type")) +  "</td>");
                 
                 out.println("<td>"  + "<a href='deleteBookings?vehiclePlate=" 
