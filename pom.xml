@@ -20,6 +20,12 @@ Java web application for garage management using Maven.</description>
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.31</version>
     </dependency>
+    <dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>3.25.5</version>
+	</dependency>
+
 </dependencies>
 
 
