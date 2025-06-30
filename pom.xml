@@ -9,6 +9,14 @@
 Java web application for garage management using Maven.
 Java web application for garage management using Maven.</description>
 
+<dependencies>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>1.10.0</version>
+    </dependency>
+</dependencies>
+
 
   <build>
     <plugins>

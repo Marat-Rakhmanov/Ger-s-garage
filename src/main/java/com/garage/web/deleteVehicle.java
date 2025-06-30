@@ -27,7 +27,7 @@ public class deleteVehicle extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         
-        String vehiclePlate = request.getParameter("vehiclePlate"); 
+        String vehiclePlate = request.getParameter("vehiclePlate").trim(); 
         
         try {
         	Class.forName("com.mysql.jdbc.Driver");

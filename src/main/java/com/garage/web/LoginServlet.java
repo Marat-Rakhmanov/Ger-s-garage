@@ -58,6 +58,8 @@ public class LoginServlet extends HttpServlet {
 				url = "/login.jsp";
 			} else {
 				if (correctPassword != null && correctPassword.equals(password)) {
+					HttpSession session = request.getSession();
+					session.setAttribute("email", email);
 					url = "/index.jsp";
 				} else {
 					message = "Incorrect email address or password.<br/>Please try again";
@@ -70,8 +72,7 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		// store the user and message in the session
-		HttpSession session = request.getSession();
-		session.setAttribute("email", email);
+
 		request.setAttribute("message", message);
 
 		// forward the request and response to the view
