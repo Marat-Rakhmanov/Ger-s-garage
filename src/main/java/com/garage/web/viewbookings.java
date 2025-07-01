@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.text.StringEscapeUtils;
+
 
 
 @WebServlet("/viewbookings")
@@ -57,15 +57,15 @@ public class viewbookings extends HttpServlet {
             while(rs.next()) {
             	
                 out.println("<tr>");
-                out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("make")) +  "</td>");
-                out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("model")) +  "</td>");
-                out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("engineType")) +  "</td>");
-                out.println("<td>" + StringEscapeUtils.escapeHtml4(rs.getString("vehiclePlate")) + "</td>");
-                out.println("<td>" + StringEscapeUtils.escapeHtml4(rs.getString("booking_date")) + "</td>");
-                out.println("<td>"  + StringEscapeUtils.escapeHtml4(rs.getString("service_type")) +  "</td>");
+                out.println("<td>"  + rs.getString("make") +  "</td>");
+                out.println("<td>"  + rs.getString("model") +  "</td>");
+                out.println("<td>"  + rs.getString("engineType") +  "</td>");
+                out.println("<td>" + rs.getString("vehiclePlate") + "</td>");
+                out.println("<td>" + rs.getString("booking_date") + "</td>");
+                out.println("<td>"  + rs.getString("service_type") +  "</td>");
                 
                 out.println("<td>"  + "<a href='deleteBookings?vehiclePlate=" 
-                	    + StringEscapeUtils.escapeHtml4(rs.getString("vehiclePlate")) + "'> Delete </a></td>");
+                	    + rs.getString("vehiclePlate") + "'> Delete </a></td>");
                 out.println("<tr>");
                 
                 
